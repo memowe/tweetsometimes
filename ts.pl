@@ -12,6 +12,9 @@ my $app_secret      = app->config('app_secret');
 my $consumer_secret = app->config('consumer_secret');
 delete app->config->{$_} for qw(app_secret consumer_secret);
 
+# hypnotoad production server configuration
+app->config(hypnotoad => {listen => ['http://*:3456']});
+
 # set secret phrase for secure signed cookies
 app->secret($app_secret);
 
